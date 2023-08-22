@@ -56,7 +56,14 @@ watch(() => cartItems.value, newCartItems => localStorage.setItem('cartItems', J
 const addOne = id => commit('incrementCartItemQuantity', id)
 const removeOne = id => commit('decrementCartItemQuantity', id)
 
-const printCart = () => {}
+const printCart = () => {
+  const cartContent = cartItems.value
+    .map(item => `${item.name} ... ${item.quantity}pcs`)
+    .join('\n')
+  const printWindow = window.open('', '_blank')
+  printWindow.document.write(`<pre>${cartContent}</pre>`)
+  printWindow.print()
+}
 
 </script>
 
