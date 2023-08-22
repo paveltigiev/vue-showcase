@@ -1,10 +1,11 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <the-navbar></the-navbar>
   <router-view/>
 </template>
+
+<script setup>
+import TheNavbar from '@/components/TheNavbar.vue'
+</script>
 
 <style lang="scss">
 #app {
