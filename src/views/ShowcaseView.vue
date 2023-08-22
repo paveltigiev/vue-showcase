@@ -29,6 +29,7 @@
 
 import { onMounted, computed } from 'vue'
 import { useStore } from 'vuex'
+import { cardExtraClassGenerator } from '../helpers'
 const store = useStore()
 
 onMounted(() => store.dispatch('getProductsList'))
@@ -36,7 +37,7 @@ onMounted(() => store.dispatch('getProductsList'))
 const productList = computed(() => store.getters.getProductList)
 const randomProductList = computed(() => [...productList.value].splice(0, Math.floor(Math.random() * 10) + 1))
 
-const extraClass = computed(() => randomProductList.value.length === 1 ? 'single-card' : 'gallery-card')
+const extraClass = computed(() => cardExtraClassGenerator(randomProductList.value.length))
 
 </script>
 
@@ -46,7 +47,7 @@ const extraClass = computed(() => randomProductList.value.length === 1 ? 'single
     overflow-x: scroll;
     width: 100%;
     max-width: 100%;
-    gap: 16px;
+    gap: 18px;
 
     .product-card {
       display: flex;
@@ -58,12 +59,14 @@ const extraClass = computed(() => randomProductList.value.length === 1 ? 'single
       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
       cursor: pointer;
       
-      &.single-card {
+      &.full_width-card {
         flex: 100%;
       }
-      
+      &.half_width-card {
+        flex: 0 0 calc(100% / 2 - 9px);
+      }
       &.gallery-card {
-        flex: 0 0 calc(100% / 2 - 8px);
+        flex: 0 0 calc(100% / 3 - 12px);
       }
 
       .product-card-img {

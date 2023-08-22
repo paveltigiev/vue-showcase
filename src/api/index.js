@@ -212,7 +212,7 @@ export function getProductListRequest() {
       "price": 700,
       "description": "blue"
     }
-  ]  
+  ]
 
   return response
 }
