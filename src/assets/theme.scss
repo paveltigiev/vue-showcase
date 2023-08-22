@@ -3,7 +3,7 @@
 
 :root {
   --primary_color: #7e57c2;
-  --bg-color: #e4e4e4;
+  --bg_color: #e4e4e4;
   --alt_bg-color: #ccc;
 }
 
@@ -12,7 +12,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 14px;
-  background-color: var(--bg-color);
+  background-color: var(--bg_color);
 }
 
 .container {
@@ -21,4 +21,22 @@ body {
   padding: 20px;
   border-radius: 8px;
   background-color: var(--alt_bg-color);
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: 8px;
+  &.primary {
+    padding: 32px;
+    border: none;
+    font-size: 2em;
+    font-weight: bold;
+    color: #fff;
+    background: var(--primary_color);
+    text-align: center;
+    &:active {
+      padding: 30px;
+      margin: 2px;
+    }
+  }
 }

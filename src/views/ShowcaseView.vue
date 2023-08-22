@@ -7,9 +7,10 @@
         :key="product.id"
         class="product-card"
         :class="extraClass"
+        @click="router.push(`/product/${product.id}`)"
       >
         <div class="product-card-img">
-          <img src="`product.cover`" :alt="product.name">
+          <img :src="`${product.cover}`" :alt="product.name">
         </div>  
         <div class="product-card-header">
           <div class="product-card-name">
@@ -30,13 +31,13 @@
 import { onMounted, computed } from 'vue'
 import { useStore } from 'vuex'
 import { cardExtraClassGenerator } from '../helpers'
+import router from '@/router';
 const store = useStore()
 
 onMounted(() => store.dispatch('getProductsList'))
 
 const productList = computed(() => store.getters.getProductList)
 const randomProductList = computed(() => [...productList.value].splice(0, Math.floor(Math.random() * 10) + 1))
-
 const extraClass = computed(() => cardExtraClassGenerator(randomProductList.value.length))
 
 </script>

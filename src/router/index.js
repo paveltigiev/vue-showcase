@@ -7,11 +7,11 @@ const routes = [
     name: 'showcase',
     component: ShowcaseView
   },
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   component: () => import('../views/AboutView.vue')
-  // }
+  {
+    path: '/product/:id',
+    name: 'product',
+    component: () => import('../views/ProductView.vue')
+  }
 ]
 
 const router = createRouter({
