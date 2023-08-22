@@ -6,7 +6,12 @@ const routes = [
     path: '/',
     name: 'showcase',
     component: ShowcaseView
-  }
+  },
+  // {
+  //   path: '/about',
+  //   name: 'about',
+  //   component: () => import('../views/AboutView.vue')
+  // }
 ]
 
 const router = createRouter({

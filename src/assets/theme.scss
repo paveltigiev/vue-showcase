@@ -1,0 +1,24 @@
+@import url('./normalize.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --primary_color: #7e57c2;
+  --bg-color: #e4e4e4;
+  --alt_bg-color: #ccc;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  background-color: var(--bg-color);
+}
+
+.container {
+  width: 1280px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: var(--alt_bg-color);
+}
