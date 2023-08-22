@@ -7,7 +7,7 @@
       <div class="modal-header">
         <div class="modal-title">
           Cart
-          <span class="btn print_btn">🖨️</span>
+          <span class="btn print_btn" @click="printCart">🖨️</span>
         </div>
         <div class="btn close_btn" @click="isDialogActive = false">✖️</div>
       </div>
@@ -24,7 +24,7 @@
           <div class="cart-item-quantity">
             <div class="btn" @click="addOne(item.id)">➕</div>
             <div class="value">{{ item.quantity }}</div>
-            <div class="btn" @click="removeOne(item.id)">{{ decrementButtonIcon(item.quantity) }}</div>
+            <div class="btn" @click="removeOne(item.id)">{{ item.quantity > 1 ? '➖' : '✖️' }}</div>
           </div>
           
         </div>
@@ -40,22 +40,23 @@
 
 <script setup>
 import { onMounted, ref, computed, watch } from 'vue'
-import { useStore } from 'vuex';
-const store = useStore()
-const cartItems = computed(() => store.getters.getCartItems)
+import { useStore } from 'vuex'
+const { commit, getters } = useStore()
+const cartItems = computed(() => getters.getCartItems)
 const cartButtontext = computed(() => cartItems.value.length > 0 ? `${cartItems.value.length} items in the cart`/*simplified count*/ : 'cart is epmty')
 const isDialogActive = ref(false)
 
 onMounted(() => {
   const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || []
-  store.commit('setCartItems', storedCartItems)
+  commit('setCartItems', storedCartItems)
 })
 
 watch(() => cartItems.value, newCartItems => localStorage.setItem('cartItems', JSON.stringify(newCartItems)))
 
-const addOne = id => store.commit('incrementCartItemQuantity', id)
-const removeOne = id => store.commit('decrementCartItemQuantity', id)
-const decrementButtonIcon = quantity => quantity > 1 ? '➖' : '✖️'
+const addOne = id => commit('incrementCartItemQuantity', id)
+const removeOne = id => commit('decrementCartItemQuantity', id)
+
+const printCart = () => {}
 
 </script>
 

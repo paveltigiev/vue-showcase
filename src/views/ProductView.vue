@@ -25,17 +25,15 @@
 <script setup>
 
 import { onMounted, computed, ref } from 'vue'
-import { useRoute } from 'vue-router';
+import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
-const store = useStore()
+const { dispatch, getters, commit } = useStore()
 const route = useRoute()
 const id = ref(route.params.id)
 
-onMounted(() => store.dispatch('getProduct', id.value))
-
-const product = computed(() => store.getters.getProduct)
-
-const addToCart = () => store.commit('addCartItem', product.value)
+onMounted(() => dispatch('getProduct', id.value))
+const product = computed(() => getters.getProduct)
+const addToCart = () => commit('addCartItem', product.value)
 
 </script>
 

@@ -31,12 +31,12 @@
 import { onMounted, computed } from 'vue'
 import { useStore } from 'vuex'
 import { cardExtraClassGenerator } from '../helpers'
-import router from '@/router';
-const store = useStore()
+import router from '@/router'
+const { dispatch, getters } = useStore()
 
-onMounted(() => store.dispatch('getProductsList'))
+onMounted(() => dispatch('getProductsList'))
 
-const productList = computed(() => store.getters.getProductList)
+const productList = computed(() => getters.getProductList)
 const randomProductList = computed(() => [...productList.value].splice(0, Math.floor(Math.random() * 10) + 1))
 const extraClass = computed(() => cardExtraClassGenerator(randomProductList.value.length))
 
