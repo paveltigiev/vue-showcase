@@ -3,37 +3,38 @@
     {{ cartButtontext }}
   </div>
   <Teleport to="body">
-    <div class="modal" v-if="isDialogActive">
-      <div class="modal-header">
-        <div class="modal-title">
-          Cart
-          <span class="btn print_btn" @click="printCart">🖨️</span>
-        </div>
-        <div class="btn close_btn" @click="isDialogActive = false">✖️</div>
-      </div>
-      <div class="cart">
-        <div
-          class="cart-item"
-          v-for="item in cartItems"
-          :key="item.id"
-        >
-          <div class="cart-item-name">
-            {{ item.name }}
-            <span class="price">{{ item.price }} $</span>
+    <div class="backdrop" @click="isDialogActive = false" v-if="isDialogActive">
+      <div class="modal" v-if="isDialogActive">
+        <div class="modal-header">
+          <div class="modal-title">
+            Cart
+            <span class="btn print_btn" @click="printCart">🖨️</span>
           </div>
-          <div class="cart-item-quantity">
-            <div class="btn" @click="addOne(item.id)">➕</div>
-            <div class="value">{{ item.quantity }}</div>
-            <div class="btn" @click="removeOne(item.id)">{{ item.quantity > 1 ? '➖' : '✖️' }}</div>
+          <div class="btn close_btn" @click="isDialogActive = false">✖️</div>
+        </div>
+        <div class="cart">
+          <div
+            class="cart-item"
+            v-for="item in cartItems"
+            :key="item.id"
+          >
+            <div class="cart-item-name">
+              {{ item.name }}
+              <span class="price">{{ item.price }} $</span>
+            </div>
+            <div class="cart-item-quantity">
+              <div class="btn" @click="addOne(item.id)">➕</div>
+              <div class="value">{{ item.quantity }}</div>
+              <div class="btn" @click="removeOne(item.id)">{{ item.quantity > 1 ? '➖' : '✖️' }}</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <div class="btn primary" v-if="cartItems.length > 0">Complete order</div>
-        <h1 v-else>There's nothing. Add something.</h1>
+        <div class="modal-footer">
+          <div class="btn primary" v-if="cartItems.length > 0">Complete order</div>
+          <h1 v-else>There's nothing. Add something.</h1>
+        </div>
       </div>
     </div>
-    <div class="backdrop" @click="isDialogActive = false" v-if="isDialogActive"></div>
   </Teleport>
 </template>
 
@@ -79,12 +80,7 @@ const printCart = () => {
 .modal {
   background: #fff;
   color: #000000;
-  position: fixed;
-  z-index: 999;
-  top: 20%;
-  left: 50%;
   width: 600px;
-  margin-left: -300px;
   z-index: 999;
   border-radius: 8px;
   padding: 16px;
@@ -154,5 +150,8 @@ const printCart = () => {
   left: 0;
   background: rgba($color: #000000, $alpha: .5);
   z-index: 998;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
