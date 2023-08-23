@@ -26,7 +26,6 @@
             <div class="value">{{ item.quantity }}</div>
             <div class="btn" @click="removeOne(item.id)">{{ item.quantity > 1 ? '➖' : '✖️' }}</div>
           </div>
-          
         </div>
       </div>
       <div class="modal-footer">
@@ -122,7 +121,6 @@ const printCart = () => {
       }
       .cart-item-name {
         .price {
-          color: var(--alt_bg-color);
           font-size: 0.6em;
         }
       }

@@ -46,20 +46,12 @@ const addToCart = () => commit('addCartItem', product.value)
 
     .product-card-img {
       width: calc(50% - 8px);
-      background: rgb(246, 246, 246);
+      background: white;
       background-image: url('../assets/placeholder.webp');
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
       border-radius: 8px;
-
-      img {
-        display: block;
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        aspect-ratio: 4/3;
-      }
     }
 
     .product-card-sidebar {
@@ -81,7 +73,8 @@ const addToCart = () => commit('addCartItem', product.value)
           font-size: 1.2em;
         }
         .product-card-description {
-          font-size: 1.1em;
+          font-size: 1.6em;
+          line-height: 1.8em;
         }
       }
     }

@@ -72,19 +72,11 @@ const extraClass = computed(() => cardExtraClassGenerator(randomProductList.valu
 
       .product-card-img {
         width: 100%;
-        background: rgb(246, 246, 246);
+        background: white;
         background-image: url('../assets/placeholder.webp');
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
-
-        img {
-          display: block;
-          width: 100%;
-          height: auto;
-          object-fit: cover;
-          aspect-ratio: 4/3;
-        }
       }
 
       .product-card-header {

@@ -2,9 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 :root {
-  --primary_color: #7e57c2;
-  --bg_color: #e4e4e4;
-  --alt_bg-color: #ccc;
+  --primary_color: #EF6262;
+  --secondary_color: #1D5B79;
+  --bg_color: #91C8E4;
+  --alt_bg-color: #F6F4EB;
 }
 
 body {
@@ -37,6 +38,18 @@ body {
     &:active {
       padding: 30px;
       margin: 2px;
+    }
+  }
+}
+
+.product-card {
+  .product-card-img {
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      aspect-ratio: 4/3;
     }
   }
 }
